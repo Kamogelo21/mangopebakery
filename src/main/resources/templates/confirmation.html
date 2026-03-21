@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Order Confirmation 💗</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<h1>Thank you for your order 💕</h1>
+
+<p>Name: <span th:text="${order.name}"></span></p>
+<p>Item: <span th:text="${order.item}"></span></p>
+<p>Quantity: <span th:text="${order.quantity}"></span></p>
+
+<a href="/">Back to Home</a>
+
+</body>
+</html>

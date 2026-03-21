@@ -1,0 +1,15 @@
+body {
+    background-color: #ffe4ec;
+    font-family: 'Comic Sans MS', cursive;
+    color: #d63384;
+
+    background: linear-gradient(to right, #ffe4ec, #ffd6e0);
+}
+
+button {
+    background-color: #ff85a2;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+}
