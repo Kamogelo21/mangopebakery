@@ -1,5 +1,6 @@
 package com.mangope.mangopebakeryandfastfood.controller;
 
+import com.mangope.mangopebakeryandfastfood.service.OrderService;
 import org.springframework.ui.Model;
 import com.mangope.mangopebakeryandfastfood.model.Order;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
+
+    private OrderService orderService;
 
     @GetMapping("/")
     public String home() {
@@ -27,7 +30,14 @@ public class HomeController {
 
     @PostMapping("/submitOrder")
     public String submitOrder(Order order, Model model) {
+        orderService.saveOrder(order);
         model.addAttribute("order", order);
         return "confirmation";
+    }
+
+    @GetMapping("/admin")
+    public String viewOrders(Model model) {
+        model.addAttribute("orders", orderService.getAllOrders());
+        return "admin";
     }
 }
