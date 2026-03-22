@@ -15,11 +15,10 @@
 <div class="container">
     <h1>Place Your Order 💗</h1>
 
-    <form action="/submitOrder" method="post">
-        <input type="text" name="name" placeholder="Your Name" required><br>
-        <input type="text" name="item" placeholder="Item" required><br>
-        <input type="number" name="quantity" placeholder="Quantity" required><br>
-
+    <form action="/submitOrder" method="post" th:object="${order}">
+        <input type="text" th:field="*{name}" placeholder="Your Name" required><br>
+        <input type="text" th:field="*{item}" placeholder="Item" required><br>
+        <input type="number" th:field="*{quantity}" placeholder="Quantity" required><br>
         <button type="submit">Order 💕</button>
     </form>
 </div>
