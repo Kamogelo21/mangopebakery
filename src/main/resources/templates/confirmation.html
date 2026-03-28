@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Order Confirmation 💗</title>
-    <link rel="stylesheet" th:href="{@/styles.css}">
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
 
@@ -16,8 +16,13 @@
 
         <p><strong>Name:</strong> <span th:text="${order.name}"></span></p>
         <p><strong>Item:</strong> <span th:text="${order.item}"></span></p>
-        <p><strong>Quantity:</strong> <span th:text="${order.quantity}"></span></p>
-
+        <p><strong>Size:</strong> <span th:text="${order.size}"></span></p>
+        <p><strong>Phone:</strong> <span th:text="${order.phone}"></span></p>
+        <p>
+            Thank you for your order 💗
+            We will contact you shortly to confirm your order details.
+            Please note: Orders require at least 2 weeks notice.
+        </p>
         <a href="/"><button>Back Home</button></a>
     </div>
 </div>

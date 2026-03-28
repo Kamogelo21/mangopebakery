@@ -1,29 +1,40 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Orders</title>
+    <title>Dashboard 💗</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
 
 <nav>
-    <a href="/">Home</a>
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/menu}">Menu</a>
+    <a th:href="@{/order}">Order</a>
+    <a th:href="@{/admin}">Dashboard</a>
 </nav>
 
 <div class="container">
-    <h1>All Orders 💗</h1>
+    <h1>📊 Orders Dashboard</h1>
+
+    <p>Total Orders: <strong th:text="${orders.size()}"></strong></p>
+
+    <a href="/export" class="btn">⬇ Download Orders</a>
 
     <table>
         <tr>
+            <th>#</th>
             <th>Name</th>
             <th>Item</th>
-            <th>Quantity</th>
+            <th>Size</th>
         </tr>
 
-        <tr th:each="order : ${orders}">
+        <tr th:each="order, stat : ${orders}">
+            <td th:text="${stat.index + 1}"></td>
             <td th:text="${order.name}"></td>
             <td th:text="${order.item}"></td>
-            <td th:text="${order.quantity}"></td>
+            <td th:text="${order.size} + 'L'"></td>
         </tr>
+
     </table>
 </div>
 
