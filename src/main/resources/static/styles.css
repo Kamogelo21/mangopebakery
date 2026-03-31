@@ -191,6 +191,24 @@ select {
     font-weight: bold;
 }
 
+/* ===== DESSERT HEADER ===== */
+.dessert-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dessert-title {
+    font-weight: bold;
+    color: #6f4e37; /* coffee brown */
+    font-size: 24px;
+}
+
+.order-notice {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #a0522d; /* softer brown/red tone */
+}
+
 /* =========================================
    ORDER PAGE
 ========================================= */
