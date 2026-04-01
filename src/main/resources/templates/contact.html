@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Mangope Bakery & Fast Food</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<nav>
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/menu}">Menu</a>
+    <a th:href="@{/order}">Order</a>
+    <a th:href="@{/about}">About</a>
+</nav>
+
+<div class="container">
+
+    <h1 class="page-title">Contact Us</h1>
+    <p class="page-subtitle">We’d love to hear from you. Reach out to place an order or ask a question.</p>
+
+    <div class="contact-wrapper">
+
+        <!-- CONTACT DETAILS -->
+        <div class="contact-info">
+
+            <h2>Get in Touch</h2>
+
+            <p>📞 Phone: <span>27685962483</span></p>
+            <p>📧 Email: <span>ashleymotapane1@outlook.com</span></p>
+
+            <a href="https://wa.me/27685962483" target="_blank" class="contact-btn">
+                Message us on WhatsApp
+            </a>
+
+        </div>
+
+        <!-- MAP -->
+        <div class="contact-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.7178594964707!2d28.12205343289472!3d-26.108127155273195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9512bad391a4af%3A0x3a7065e9b57cbd1f!2s359%20River%20Park%20Dr%2C%20Lombardy%20East%2C%20Johannesburg%2C%202090!5e0!3m2!1sen!2sza!4v1775076732763!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    width="100%"
+                    height="300"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy">
+            </iframe>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    <div class="footer-contacts">
+        <p> For inquiries: </p>
+        <a href="https://wa.me/27685962483" target="_blank">
+            <img src="/images/whatsapp.jpg" alt="WhatsApp" class="footer-icon">
+            <p> WhatsApp us </p>
+        </a>
+        <a href="mailto:ashleymotapane1@outlook.com">
+            <img src="/images/email.jpg" alt="Email" class="footer-icon">
+            <p> Email us </p>
+        </a>
+    </div>
+
+    <p class="footer-copy">
+        &copy; 2026 Mangope Bakery & Fast Food. All Rights Reserved.
+    </p>
+</footer>
+
+</body>
+</html>

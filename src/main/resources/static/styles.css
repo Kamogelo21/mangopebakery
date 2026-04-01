@@ -500,3 +500,86 @@ footer p {
         max-width: 250px;
     }
 }
+
+/* ================= CONTACT PAGE ================= */
+
+.page-title {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 32px;
+    color: #6f4e37; /* coffee brown */
+}
+
+.page-subtitle {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #5c4033;
+}
+
+/* Layout */
+.contact-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Contact Info */
+.contact-info {
+    background-color: #fff8f2;
+    padding: 25px;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.contact-info h2 {
+    margin-bottom: 15px;
+    color: #8b5e3c;
+}
+
+.contact-info p {
+    margin: 10px 0;
+    color: #4b3a2f;
+}
+
+/* Button */
+.contact-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #d68a59;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-btn:hover {
+    background-color: #b76a40;
+}
+
+/* Map */
+.contact-map {
+    width: 400px;
+    max-width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-info {
+        width: 100%;
+    }
+
+    .contact-map {
+        width: 100%;
+    }
+}
