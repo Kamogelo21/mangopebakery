@@ -17,8 +17,36 @@ public class OrderService {
     }
 
     @Transactional
-    public void saveOrder(Order order) {
-        orderRepository.save(order);
+    public Order saveOrder(String name, String phone, String orderDetails) {
+
+        if (!hasItems(orderDetails)) {
+            throw new IllegalArgumentException("At least one item must be ordered");
+        }
+
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Name is required");
+        }
+
+        if (phone == null || phone.isBlank()) {
+            throw new IllegalArgumentException("Phone number is required");
+        }
+
+        if (orderDetails == null || orderDetails.isBlank()) {
+            throw new IllegalArgumentException("At least one item must be ordered");
+        }
+
+        // ✅ Create Order
+        Order order = new Order();
+        order.setName(name);
+        order.setPhone(phone);
+        order.setItem(orderDetails);
+        order.setSize(0); // deprecated field
+
+        return orderRepository.save(order);
+    }
+
+    public boolean hasItems(String orderDetails) {
+        return orderDetails != null && !orderDetails.isBlank();
     }
 
     public List<Order> getAllOrders() {

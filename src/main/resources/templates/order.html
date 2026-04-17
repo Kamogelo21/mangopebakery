@@ -7,12 +7,21 @@
 </head>
 <body>
 
-<nav>
-    <a th:href="@{/}">Home</a>
-    <a th:href="@{/menu}">Menu</a>
-    <a th:href="@{/order}">Order</a>
-    <a th:href="@{/about}">About</a>
-    <a th:href="@{/contact}">Contact</a>
+<nav class="navbar">
+    <div class="nav-container">
+
+        <a href="/" class="logo-link">
+            <img th:src="@{/images/logo1.png}" alt="Logo" class="logo">
+        </a>
+
+        <div class="nav-links">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/menu}">Menu</a>
+            <a th:href="@{/order}">Order</a>
+            <a th:href="@{/about}">About</a>
+            <a th:href="@{/contact}">Contact</a>
+        </div>
+    </div>
 </nav>
 
 <div class="order-title">
@@ -24,41 +33,47 @@
         <input type="text" th:field="*{name}" placeholder="Your Name" required><br>
 
         <!-- Phone Number -->
-        <input type="text" th:field="*{phone}" placeholder="Phone Number" required>
+        <input type="text" th:field="*{phone}" placeholder="Phone Number" required><br><br>
 
-        <!-- Item Dropdown -->
-        <select th:field="*{item}" id="itemSelect" required>
-            <option value="">Select Item</option>
-            <option value="Plain Scones">Plain Scones</option>
-            <option value="Flavoured Scones">Flavoured Scones</option>
-            <option value="Queens Cakes">Queens Cakes</option>
-            <option value="Snowballs">Snowballs / Red Cake</option>
-            <option value="Jam Tarts">Jam Tarts</option>
-            <option value="Melting Moments">Melting Moments</option>
-            <option value="Romany Creams">Romany Creams</option>
-            <option value="Ginger Biscuits">Ginger Biscuits</option>
-            <option value="Lemon Creams">Lemon Creams</option>
-            <option value="Lamingtons">Lamingtons</option>
-            <option value="Eat-sumore">Eat-sumore</option>
-            <option value="Assorted Biscuits">Assorted Biscuits</option>
-        </select><br>
+        <h3>Select Items & Quantities</h3>
 
-        <!-- Size Dropdown -->
-        <select th:field="*{size}" id="sizeSelect" required>
-            <option value="">Select Size</option>
-            <option value="5">5L</option>
-            <option value="10">10L</option>
-            <option value="20">20L</option>
-        </select>
+        <!-- Plain Scones -->
+        <div class="order-item">
+            <label>Plain Scones (5L / 10L / 20L)</label>
+            <input type="number" name="plainSconesQty" min="0" placeholder="Qty">
+        </div>
+
+        <!-- Flavoured Scones -->
+        <div class="order-item">
+            <label>Flavoured Scones</label>
+            <input type="number" name="flavouredSconesQty" min="0" placeholder="Qty">
+        </div>
+
+        <!-- Queens Cakes -->
+        <div class="order-item">
+            <label>Queens Cakes</label>
+            <input type="number" name="queensCakesQty" min="0" placeholder="Qty">
+        </div>
+
+        <!-- Snowballs -->
+        <div class="order-item">
+            <label>Snowballs / Red Cake</label>
+            <input type="number" name="snowballsQty" min="0" placeholder="Qty">
+        </div>
+
+        <!-- Jam Tarts -->
+        <div class="order-item">
+            <label>Jam Tarts</label>
+            <input type="number" name="jamTartsQty" min="0" placeholder="Qty">
+        </div>
+
+        <!-- Add more items same pattern -->
 
         <p class="notice" style="color: red; font-size: 14px;">
-            ⚠ Orders require at least 2 weeks notice. We will reach out to you to confirm details.
+            ⚠ Orders require at least a day's notice. We will reach out to you to confirm details.
         </p>
 
         <button type="submit">Order 💕</button>
-        <p>
-
-        </p>
     </form>
 </div>
 

@@ -4,16 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | Mangope Bakery & Fast Food</title>
-    <link rel="stylesheet" th:href="@{/static/styles.css}">
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
+
 <body>
 
-<nav>
-    <a th:href="@{/}">Home</a>
-    <a th:href="@{/menu}">Menu</a>
-    <a th:href="@{/order}">Order</a>
-    <a th:href="@{/about}">About</a>
-    <a th:href="@{/contact}">Contact</a>
+<nav class="navbar">
+    <div class="nav-container">
+
+        <a href="/" class="logo-link">
+            <img th:src="@{/images/logo1.png}" alt="Logo" class="logo">
+        </a>
+
+        <div class="nav-links">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/menu}">Menu</a>
+            <a th:href="@{/order}">Order</a>
+            <a th:href="@{/about}">About</a>
+            <a th:href="@{/contact}">Contact</a>
+        </div>
+    </div>
 </nav>
 
 <div class="container">
@@ -28,7 +38,7 @@
 
             <h2>Get in Touch</h2>
 
-            <p>📞 Phone: <span>27685962483</span></p>
+            <p>📞 Phone: <span>+27685962483</span></p>
             <p>📧 Email: <span>ashleymotapane1@outlook.com</span></p>
 
             <a href="https://wa.me/27685962483" target="_blank" class="contact-btn">

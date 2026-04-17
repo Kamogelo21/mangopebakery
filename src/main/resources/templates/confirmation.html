@@ -7,8 +7,17 @@
 </head>
 <body>
 
-<nav>
-    <a href="/">Home</a>
+<nav class="navbar">
+    <div class="nav-container">
+
+        <a href="/" class="logo-link">
+            <img th:src="@{/images/logo1.png}" alt="Logo" class="logo">
+        </a>
+
+        <div class="nav-links">
+            <a th:href="@{/}">Home</a>
+        </div>
+    </div>
 </nav>
 
 <div class="confirmation-box">

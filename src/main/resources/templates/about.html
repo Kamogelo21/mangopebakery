@@ -7,12 +7,21 @@
 </head>
 <body>
 
-<nav>
-    <a th:href="@{/}">Home</a>
-    <a th:href="@{/menu}">Menu</a>
-    <a th:href="@{/order}">Order</a>
-    <a th:href="@{/about}">About</a>
-    <a th:href="@{/contact}">Contact</a>
+<nav class="navbar">
+    <div class="nav-container">
+
+        <a href="/" class="logo-link">
+            <img th:src="@{/images/logo1.png}" alt="Logo" class="logo">
+        </a>
+
+        <div class="nav-links">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/menu}">Menu</a>
+            <a th:href="@{/order}">Order</a>
+            <a th:href="@{/about}">About</a>
+            <a th:href="@{/contact}">Contact</a>
+        </div>
+    </div>
 </nav>
 
 <div class="container">
