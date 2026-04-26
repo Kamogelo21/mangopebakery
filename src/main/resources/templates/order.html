@@ -27,191 +27,64 @@
 <div class="order-title">
     <h1>Place Your Order 💗</h1>
 
-    <form th:action="@{/submitOrder}" method="post" th:object="${order}">
-
-        <!-- Name -->
-        <input type="text" th:field="*{name}" placeholder="Your Name" required><br>
-
-        <!-- Phone Number -->
-        <input type="text" th:field="*{phone}" placeholder="Phone Number" required><br><br>
+    <form th:action="@{/submitOrder}" method="post" th:object="${order}" onsubmit="prepareOrder()">
+        <!--Customer info-->
+        <div class="customer-info">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="text" name="phone" placeholder="Phone Number" required>
+        </div>
 
         <h3>Select Items & Quantities</h3>
 
-        <!-- Assorted Biscuits -->
-        <div class="order-item-row">
-            <label>Assorted Biscuits</label>
+        <div class="order-box">
+            <select id="item">
+                <option value="">Select Item</option>
 
-            <select name="assortedBiscuitsSize">
-                <option value="">Size</option>
-                <option value="5L">5L</option>
-                <option value="10L">10L</option>
-                <option value="20L">20L</option>
+                <option value="Assorted Biscuits">Assorted Biscuits</option>
+                <option value="Eat Sumore">Eat Sumore</option>
+                <option value="Flavoured Scones">Flavoured Scones</option>
+                <option value="Ginger Biscuits">Ginger Biscuits</option>
+                <option value="Jam Tarts">Jam Tarts</option>
+                <option value="Lamingtons">Lamingtons</option>
+                <option value="Lemon Creams">Lemon Creams</option>
+                <option value="Melting Moments">Melting Moments</option>
+                <option value="Queens Cakes">Queens Cakes</option>
+                <option value="Romany Creams">Romany Creams</option>
+                <option value="Snowballs / Red Cake">Snowballs / Red Cake</option>
+                <option value="Plain Scones">Plain Scones</option>
             </select>
 
-            <input type="number" name="assortedBiscuitsQty" min="0" placeholder="Qty">
-        </div>
-
-        <!-- Eat Sumore -->
-        <div class="order-item-row">
-            <label>Eat Sumore</label>
-
-            <select name="eatsumoreSize">
+            <select id="size">
                 <option value="">Size</option>
-                <option value="5L">5L</option>
-                <option value="10L">10L</option>
-                <option value="20L">20L</option>
+                <option value="5">5L</option>
+                <option value="10">10L</option>
+                <option value="20">20L</option>
             </select>
 
-            <input type="number" name="eatsumoreQty" min="0" placeholder="Qty">
+            <input type="number" id="qty" min="1" value="1">
+
+            <button type="button" onclick="addItem()">Add</button>
+
         </div>
 
-        <!-- Flavoured Scones -->
-        <div class="order-item-row">
-            <label>Flavoured Scones</label>
-
-            <select name="flavouredSconesSize">
-                <option value="">Size</option>
-                <option value="5L">5L</option>
-                <option value="10L">10L</option>
-                <option value="20L">20L</option>
-            </select>
-
-            <input type="number" name="flavouredSconesQty" min="0" placeholder="Qty">
+        <!-- ORDER SUMMARY -->
+        <div id="orderSummary" class="order-summary">
+            <h3>Your Order</h3>
+            <ul id="orderList"></ul>
         </div>
 
-        <!-- Ginger Biscuits -->
-        <div class="order-item-row">
-            <label>Ginger Biscuits</label>
-
-            <select name="gingerBiscuitsSize">
-                <option value="">Size</option>
-                <option value="5L">5L</option>
-                <option value="10L">10L</option>
-                <option value="20L">20L</option>
-            </select>
-
-            <input type="number" name="gingerBiscuitsQty" min="0" placeholder="Qty">
-        </div>
-
-        <!-- Jam Tarts -->
-        <div class="order-item-row">
-            <label>Jam Tarts</label>
-
-            <select name="jamTartsSize">
-                <option value="">Size</option>
-                <option value="5L">5L</option>
-                <option value="10L">10L</option>
-                <option value="20L">20L</option>
-            </select>
-
-            <input type="number" name="jamTartsQty" min="0" placeholder="Qty">
-        </div>
-
-        <div class="order-item-row">
-            <label>Lamingtons</label>
-
-            <select name="lamingtonsSize">
-                <option value="">Size</option>
-                <option value="10L">10L</option>
-                <option value="20L">20L</option>
-            </select>
-
-            <input type="number" name="lamingtonsQty" min="0" placeholder="Qty">
-        </div>
-
-        <!-- Lemon Creams -->
-        <div class="order-item-row">
-            <label>Lemon Creams</label>
-
-            <select name="lemonCreamsSize">
-                <option value="">Size</option>
-                <option value="5L">5L</option>
-                <option value="10L">10L</option>
-                <option value="20L">20L</option>
-            </select>
-
-            <input type="number" name="lemonCreamsQty" min="0" placeholder="Qty">
-        </div>
-
-        <!-- Melting Moments -->
-        <div class="order-item-row">
-            <label>Melting Moments</label>
-
-            <select name="meltingMomentsSize">
-                <option value="">Size</option>
-                <option value="5L">5L</option>
-                <option value="10L">10L</option>
-                <option value="20L">20L</option>
-            </select>
-
-            <input type="number" name="meltingMomentsQty" min="0" placeholder="Qty">
-        </div>
-
-        <!-- Queens Cakes -->
-        <div class="order-item-row">
-            <label>Queens Cakes</label>
-
-            <select name="queensCakesSize">
-                <option value="">Size</option>
-                <option value="5L">5L</option>
-                <option value="10L">10L</option>
-                <option value="20L">20L</option>
-            </select>
-
-            <input type="number" name="queensCakesQty" min="0" placeholder="Qty">
-        </div>
-
-        <!-- Romany Creams -->
-        <div class="order-item-row">
-            <label>Romany Creams</label>
-
-            <select name="romanyCreamsSize">
-                <option value="">Size</option>
-                <option value="5L">5L</option>
-                <option value="10L">10L</option>
-                <option value="20L">20L</option>
-            </select>
-
-            <input type="number" name="romanyCreamsQty" min="0" placeholder="Qty">
-        </div>
-
-        <!-- Snowballs -->
-        <div class="order-item-row">
-            <label>Snowballs / Red Cake</label>
-
-            <select name="snowballsSize">
-                <option value="">Size</option>
-                <option value="5L">5L</option>
-                <option value="10L">10L</option>
-                <option value="20L">20L</option>
-            </select>
-
-            <input type="number" name="snowballsQty" min="0" placeholder="Qty">
-        </div>
-
-        <!-- Plain Scones -->
-        <div class="order-item-row">
-            <label>Plain Scones</label>
-
-            <select name="plainSconesSize">
-                <option value="">Size</option>
-                <option value="5L">5L</option>
-                <option value="10L">10L</option>
-                <option value="20L">20L</option>
-            </select>
-
-            <input type="number" name="plainSconesQty" min="0" placeholder="Qty">
-        </div>
-
-        <p class="notice" style="color: red; font-size: 14px;">
-            ⚠ Orders require at least a day's notice. We will reach out to you to confirm details.
-        </p>
+        <!-- HIDDEN FIELD FOR BACKEND -->
+        <input type="hidden" name="orderDetails" id="orderDetails">
 
         <button type="submit">Order 💕</button>
     </form>
+
+    <p class="notice" style="color: red; font-size: 14px;">
+        ⚠ Orders require at least a day's notice. We will reach out to you to confirm details.
+    </p>
 </div>
 
-<script src="/js/order.js"></script>
+<!--<script src="/js/order.js"></script>-->
 
 <footer>
         <div class="footer-contacts">
@@ -230,5 +103,6 @@
             &copy; 2026 Mangope Bakery & Fast Food. All Rights Reserved.
         </p>
 </footer>
+<script src="/js/order.js"></script>
 </body>
 </html>

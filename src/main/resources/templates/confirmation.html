@@ -25,9 +25,11 @@
         <h1>Thank you 💕</h1>
 
         <p><strong>Name:</strong> <span th:text="${order.name}"></span></p>
-        <p><strong>Item:</strong> <span th:text="${order.item}"></span></p>
-        <p><strong>Size:</strong> <span th:text="${order.size}"></span></p>
+        <!--<p><strong>Item:</strong> <span th:text="${order.item}"></span></p>-->
+        <!--<p><strong>Size:</strong> <span th:text="${order.size}"></span></p-->
         <p><strong>Phone:</strong> <span th:text="${order.phone}"></span></p>
+        <p><strong>Order Details:</strong></p>
+        <pre th:text="${order.item}"></pre>
         <p>
             Thank you for your order 💗
             We will contact you shortly to confirm your order details.

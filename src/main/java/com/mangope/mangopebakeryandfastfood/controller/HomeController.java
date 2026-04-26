@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class HomeController {
@@ -50,61 +51,34 @@ public class HomeController {
     public String submitOrder(
             @RequestParam String name,
             @RequestParam String phone,
-
-            @RequestParam(required = false, defaultValue = "0") int plainSconesQty,
-            @RequestParam(required = false, defaultValue = "0") int flavouredSconesQty,
-            @RequestParam(required = false, defaultValue = "0") int queensCakesQty,
-            @RequestParam(required = false, defaultValue = "0") int snowballsQty,
-            @RequestParam(required = false, defaultValue = "0") int jamTartsQty,
-            @RequestParam(required = false, defaultValue = "0") int meltingMomentsQty,
-            @RequestParam(required = false, defaultValue = "0") int romanyCreamsQty,
-            @RequestParam(required = false, defaultValue = "0") int gingerBiscuitsQty,
-            @RequestParam(required = false, defaultValue = "0") int lemonCreamsQty,
-            @RequestParam(required = false, defaultValue = "0") int lamingtonsQty,
-            @RequestParam(required = false, defaultValue = "0") int eatsumoreQty,
-            @RequestParam(required = false, defaultValue = "0") int assortedBiscuitsQty,
-
+            @RequestParam String orderDetails,
             Model model
     ) {
 
-        StringBuilder orderDetails = new StringBuilder();
+        // Basic validation
+        if (orderDetails == null || orderDetails.isBlank()) {
+            model.addAttribute("error", "Please add at least one item to your order.");
+            return "order";
+        }
 
-        if (plainSconesQty > 0) orderDetails.append("Plain Scones x").append(plainSconesQty).append("\n");
-        if (flavouredSconesQty > 0) orderDetails.append("Flavoured Scones x").append(flavouredSconesQty).append("\n");
-        if (queensCakesQty > 0) orderDetails.append("Queens Cakes x").append(queensCakesQty).append("\n");
-        if (snowballsQty > 0) orderDetails.append("Snowballs x").append(snowballsQty).append("\n");
-        if (jamTartsQty > 0) orderDetails.append("Jam Tarts x").append(jamTartsQty).append("\n");
-        if (meltingMomentsQty > 0) orderDetails.append("Melting Moments x").append(meltingMomentsQty).append("\n");
-        if (romanyCreamsQty > 0) orderDetails.append("Romany Creams x").append(romanyCreamsQty).append("\n");
-        if (gingerBiscuitsQty > 0) orderDetails.append("Ginger Biscuits x").append(gingerBiscuitsQty).append("\n");
-        if (lemonCreamsQty > 0) orderDetails.append("Lemon Creams x").append(lemonCreamsQty).append("\n");
-        if (lamingtonsQty > 0) orderDetails.append("Lamingtons x").append(lamingtonsQty).append("\n");
-        if (eatsumoreQty > 0) orderDetails.append("Eat-sumore x").append(eatsumoreQty).append("\n");
-        if (assortedBiscuitsQty > 0) orderDetails.append("Assorted Biscuits x").append(assortedBiscuitsQty).append("\n");
+        // Save order
+        Order order = orderService.saveOrder(name, phone, orderDetails);
 
-        // Save order using service
-        Order savedOrder = orderService.saveOrder(
-                name,
-                phone,
-                orderDetails.toString().replaceAll("\n$", "")
-        );
-
-        // Add to model for confirmation page
-        model.addAttribute("order", savedOrder);
+        model.addAttribute("order", order);
 
         // Email
         String to = "ashleymotapane1@outlook.com";
-        String subject = "New Order Received!";
-        String text = "🧾 Order Details\n\n" +
-                "Customer Name: " + name + "\n" +
-                "Contact Number: " + phone + "\n\n" +
-                "Ordered Items:\n" +
+
+        String text = "🧾 New Order\n\n" +
+                "Customer: " + name + "\n" +
+                "Phone: " + phone + "\n\n" +
+                "Items:\n" +
                 "----------------------\n" +
-                orderDetails.toString().trim() +
-                "----------------------";
+                orderDetails +
+                "\n----------------------";
 
         try {
-            emailService.sendOrderEmail(to, subject, text);
+            emailService.sendOrderEmail(to, "New Order Received!", text);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -113,7 +87,12 @@ public class HomeController {
     }
 
     @GetMapping("/admin")
-    public String viewOrders(Model model) {
+    public String viewOrders(@RequestParam(required = false) String key, Model model) {
+
+        if (!"mangope123".equals(key)) {
+            return "redirect:/";
+        }
+
         model.addAttribute("orders", orderService.getAllOrders());
         return "admin";
     }
@@ -163,5 +142,14 @@ public class HomeController {
     @GetMapping("/contact")
     public String contact() {
         return "contact";
+    }
+
+    private String formatItemName(String raw) {
+
+        // Convert camelCase → spaced words
+        String result = raw.replaceAll("([A-Z])", " $1").trim();
+
+        // Capitalize first letter
+        return result.substring(0, 1).toUpperCase() + result.substring(1);
     }
 }

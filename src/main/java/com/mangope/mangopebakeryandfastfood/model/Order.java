@@ -25,7 +25,7 @@ public class Order {
     public String getItem() { return item; }
     public void setItem(String item) { this.item = item; }
 
-    public int getSize() { return size; }
+    public Integer getSize() { return size == null ? 0 : size; }
     public void setSize(Integer size) { this.size = size; }
 
     public Long getId() { return id; }

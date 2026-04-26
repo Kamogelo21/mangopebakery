@@ -40,7 +40,7 @@ public class OrderService {
         order.setName(name);
         order.setPhone(phone);
         order.setItem(orderDetails);
-        order.setSize(0); // deprecated field
+        //order.setSize(0); // deprecated field
 
         return orderRepository.save(order);
     }

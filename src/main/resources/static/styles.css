@@ -228,12 +228,13 @@ select {
 .dessert-title {
     font-weight: bold;
     color: #6f4e37; /* coffee brown */
-    font-size: 24px;
+    font-size: 34px;
 }
 
 .order-notice {
     margin-top: 8px;
-    font-size: 14px;
+    font-size: 18px;
+    text-align: center;
     color: #a0522d; /* softer brown/red tone */
 }
 
@@ -262,7 +263,7 @@ select {
     margin-top: 20px;
 }
 
-.order-item {
+/*.order-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -273,8 +274,8 @@ select {
     margin: 10px 0;
     margin: 12px auto;
     padding: 10px 20px;   /* 👈 pushes content inward */
-    max-width: 500px;     /* 👈 prevents edge stretching */
-    width: 90%;
+    /*max-width: 500px;     /* 👈 prevents edge stretching */
+    /*width: 90%;
 }
 
 .order-item label {
@@ -298,6 +299,58 @@ select {
 
     background: #f8f5f2;
     border-radius: 8px;
+}*/
+
+.customer-info {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.order-box {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+
+    background: #f8f5f2;
+    border: 2px solid #6f4e37;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 700px;
+    margin: auto;
+}
+
+.order-box select,
+.order-box input {
+    padding: 6px;
+}
+
+.order-box button {
+    background: #6f4e37;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.order-summary {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 10px;
+
+    border: 2px solid #6f4e37;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.order-summary h3 {
+    color: #6f4e37;
+}
+
+.order-summary ul {
+    padding-left: 20px;
 }
 
 /* =========================================

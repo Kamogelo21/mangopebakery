@@ -10,9 +10,9 @@
 <nav class="navbar">
     <div class="nav-container">
 
-        <a href="/" class="logo-link">
+        <!--<a href="/" class="logo-link">
             <img th:src="@{/images/logo1.png}" alt="Logo" class="logo">
-        </a>
+        </a>-->
 
         <div class="nav-links">
             <a th:href="@{/}">Home</a>
@@ -33,20 +33,23 @@
     <a href="/export" class="btn">⬇ Download Orders</a>
 
     <table>
+        <thead>
         <tr>
-            <th>#</th>
             <th>Name</th>
-            <th>Item</th>
-            <th>Size</th>
+            <th>Phone</th>
+            <th>Order</th>
         </tr>
+        </thead>
 
-        <tr th:each="order, stat : ${orders}">
-            <td th:text="${stat.index + 1}"></td>
+        <tbody>
+        <tr th:each="order : ${orders}">
             <td th:text="${order.name}"></td>
-            <td th:text="${order.item}"></td>
-            <td th:text="${order.size} + 'L'"></td>
+            <td th:text="${order.phone}"></td>
+            <td>
+                <pre th:text="${order.item}"></pre>
+            </td>
         </tr>
-
+        </tbody>
     </table>
 </div>
 
