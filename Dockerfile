@@ -1,18 +1,17 @@
-# Use official OpenJDK image
-FROM eclipse-temurin:21-jdk
+FROM eclipse-temurin:21-jdk AS build
 
-# Set working directory
 WORKDIR /app
 
-# Copy Maven wrapper and pom.xml first (for caching)
-COPY mvnw pom.xml ./
-COPY .mvn .mvn
+COPY . .
 
-# Copy source code
-COPY src src
+RUN ./mvnw clean package -DskipTests
 
-RUN apt-get update && apt-get install -y maven && mvn clean package -DskipTests
+FROM eclipse-temurin:21-jdk
+
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "target/mangopebakeryandfastfood-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
