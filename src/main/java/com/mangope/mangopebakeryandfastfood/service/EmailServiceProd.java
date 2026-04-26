@@ -7,8 +7,9 @@ import org.springframework.stereotype.Service;
 @Profile("prod")
 public class EmailServiceProd implements EmailService {
 
-    public void sendEmail(String to, String subject, String body) {
-        // do nothing (or log)
+    @Override
+    public void sendOrderEmail(String to, String subject, String body) {
+        // no email in production
         System.out.println("Email disabled in production");
     }
 }
