@@ -8,8 +8,7 @@ Mangope Bakery & Fast Food is a full-stack web application designed to streamlin
 Customers can build multi-item orders with different sizes and quantities, while the business owner can view and manage orders from an admin dashboard.
 
 🚀 Live Demo
-
-(Add deployed link later)
+(.....)
 
 🖼️ Screenshots
 
