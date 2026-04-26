@@ -76,7 +76,7 @@ Customers can build multi-item orders with different sizes and quantities, while
  . Export them for business use
    
 🛠️ Running Locally
-git clone https://github.com/YOUR_USERNAME/mangopebakeryandfastfood.git
+git clone https://github.com/Kamogelo21/mangopebakeryandfastfood.git
 cd mangopebakeryandfastfood
 mvn spring-boot:run
 
@@ -111,8 +111,7 @@ src/
  . 📬 Contact
 
 For inquiries or business use:
-. WhatsApp: +27 XX XXX XXXX
-. Email: your@email.com
+. Email: karabomeno18@gmail.com
 
 ## 📄 License
 . This project is proprietary and developed for Mangope Bakery & Fast Food.
